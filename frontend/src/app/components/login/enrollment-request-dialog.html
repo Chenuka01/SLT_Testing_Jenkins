@@ -1,0 +1,75 @@
+<div class="enrollment-modal">
+  <div class="modal-header">
+    <div class="header-icon">
+      <mat-icon>admin_panel_settings</mat-icon>
+    </div>
+    <div>
+      <span>SECOPS ENROLLMENT PIPELINE</span>
+      <h2 mat-dialog-title>Request Vault Access</h2>
+      <p>Your account will remain pending until SecOps approves the request.</p>
+    </div>
+  </div>
+
+  <mat-dialog-content>
+    <form class="enrollment-form">
+      <div class="form-grid">
+        <mat-form-field appearance="outline" class="secure-field">
+          <mat-label>SLT Employee ID</mat-label>
+          <input matInput [(ngModel)]="request.slt_employee_id" name="slt_employee_id" placeholder="SLT/EMP/XXXX" required>
+          <mat-icon matPrefix>badge</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="secure-field">
+          <mat-label>Full Name</mat-label>
+          <input matInput [(ngModel)]="request.full_name" name="full_name" required>
+          <mat-icon matPrefix>person</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="form-grid">
+        <mat-form-field appearance="outline" class="secure-field">
+          <mat-label>SLT Email</mat-label>
+          <input matInput type="email" [(ngModel)]="request.email" name="email" placeholder="name@slt.lk" required>
+          <mat-icon matPrefix>alternate_email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="secure-field">
+          <mat-label>Department</mat-label>
+          <input matInput [(ngModel)]="request.department" name="department" placeholder="IT_App_Dev" required>
+          <mat-icon matPrefix>business</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="outline" class="secure-field">
+        <mat-label>Requested Role</mat-label>
+        <mat-select [(ngModel)]="request.requested_role" name="requested_role">
+          <mat-option value="DEVELOPER">Developer</mat-option>
+          <mat-option value="READONLY">Read Only</mat-option>
+          <mat-option value="MANAGER">Project Manager</mat-option>
+          <mat-option value="SECOPS">SecOps</mat-option>
+        </mat-select>
+        <mat-icon matPrefix>verified_user</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="secure-field">
+        <mat-label>Reason for Access</mat-label>
+        <textarea matInput rows="4" [(ngModel)]="request.reason_for_access" name="reason_for_access" required></textarea>
+        <mat-icon matPrefix>assignment</mat-icon>
+      </mat-form-field>
+
+      <div class="error-panel" *ngIf="errorMessage">
+        <mat-icon>error</mat-icon>
+        <span>{{ errorMessage }}</span>
+      </div>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button class="secondary-action" type="button" (click)="onCancel()">Cancel</button>
+    <button mat-flat-button class="primary-action" type="button" (click)="onSubmit()"
+            [disabled]="isSubmitting || !request.slt_employee_id || !request.full_name || !request.email || !request.department || !request.reason_for_access">
+      <mat-icon>{{ isSubmitting ? 'sync' : 'send' }}</mat-icon>
+      {{ isSubmitting ? 'Submitting' : 'Submit Request' }}
+    </button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,158 @@
+<div class="project-page-shell">
+  <section class="command-hero" aria-labelledby="portfolio-title">
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <div class="hero-copy animate-reveal-up">
+      <div class="command-kicker">
+        <span class="status-dot"></span>
+        <span>SECURE INFRASTRUCTURE COMMAND</span>
+      </div>
+
+      <h1 id="portfolio-title">
+        Enterprise <span>Asset Portfolio</span>
+      </h1>
+
+      <p class="hero-description">
+        Securely orchestrating <strong>mission-critical</strong> credentials and cryptographic access vectors for SLT Group's global digital ecosystem. Every interaction is cryptographically verified and logged in the immutable audit trail.
+      </p>
+
+      <div class="hero-actions">
+        <a mat-flat-button class="hero-primary-action" href="#asset-grid">
+          <mat-icon>verified_user</mat-icon>
+          View Secure Assets
+        </a>
+        <div class="clearance-chip">
+          <span>LEVEL-4 ACCESS</span>
+          <strong>AUTHENTICATED</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="security-console animate-reveal-up" style="animation-delay: 0.15s;">
+      <div class="console-topline">
+        <span>SLT_GLOBAL_INFRA</span>
+        <span>SYNC 14MS</span>
+      </div>
+
+      <div class="shield-terminal">
+        <mat-icon>security</mat-icon>
+        <div class="terminal-ring ring-a"></div>
+        <div class="terminal-ring ring-b"></div>
+        <div class="terminal-scan"></div>
+      </div>
+
+      <div class="header-stats-grid">
+        <div class="h-stat-item">
+          <span class="h-stat-label">VAULT_STRENGTH</span>
+          <span class="h-stat-value">AES-256-GCM</span>
+        </div>
+        <div class="h-stat-item">
+          <span class="h-stat-label">SECURITY_STANDARD</span>
+          <span class="h-stat-value">FIPS-140-2</span>
+        </div>
+        <div class="h-stat-item">
+          <span class="h-stat-label">AUDIT_PROTOCOL</span>
+          <span class="h-stat-value">REAL-TIME</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cyber Filtering Console - Centered for Balance -->
+  <div class="filter-action-bar mb-5 animate-reveal-up mx-auto" style="animation-delay: 0.2s; max-width: 1000px;">
+    <div class="row g-3 justify-content-center">
+      <div class="col-md-6">
+        <div class="cyber-search-box">
+          <mat-icon class="search-icon">radar</mat-icon>
+          <input type="text" 
+                 [(ngModel)]="searchTerm" 
+                 (input)="applyFilters()" 
+                 placeholder="SCANNING_FOR_ASSETS (BY_NAME_OR_DEPT)..." 
+                 class="cyber-input">
+          <div class="input-glow"></div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="filter-group justify-content-center">
+          <label class="filter-label">CRITICALITY_FILTER:</label>
+          <div class="cyber-tabs">
+            <button [class.active]="selectedLevel === 'ALL'" (click)="selectedLevel = 'ALL'; applyFilters()">ALL</button>
+            <button [class.active]="selectedLevel === 'MISSION_CRITICAL'" (click)="selectedLevel = 'MISSION_CRITICAL'; applyFilters()">CRITICAL</button>
+            <button [class.active]="selectedLevel === 'HIGH'" (click)="selectedLevel = 'HIGH'; applyFilters()">HIGH</button>
+            <button [class.active]="selectedLevel === 'MEDIUM'" (click)="selectedLevel = 'MEDIUM'; applyFilters()">NORMAL</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full Custom Cyber-Grid Layout -->
+  <div id="asset-grid" class="project-grid">
+    <div *ngFor="let project of projects" 
+         class="terminal-card animate-reveal-up"
+         [ngClass]="{
+           'critical': project.criticality_level === 'MISSION_CRITICAL',
+           'high': project.criticality_level === 'HIGH',
+           'normal': project.criticality_level === 'MEDIUM' || !project.criticality_level
+         }">
+      
+      <div class="scanline"></div>
+      
+      <div class="p-4">
+        <div class="card-header-meta">
+          <span class="asset-id">AST-{{project.id || '999'}} // SEC-{{project.criticality_level?.charAt(0) || 'N'}}</span>
+          <mat-icon [style.color]="project.criticality_level === 'MISSION_CRITICAL' ? '#ff4e50' : '#00a1e1'" style="font-size: 18px;">
+            {{project.criticality_level === 'MISSION_CRITICAL' ? 'report_problem' : 'hub'}}
+          </mat-icon>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 mb-4">
+          <div class="project-icon-wrapper">
+            <mat-icon>{{project.criticality_level === 'MISSION_CRITICAL' ? 'security' : 'settings_input_component'}}</mat-icon>
+          </div>
+          <div>
+            <h3 class="project-title mb-0">{{project.name}}</h3>
+            <div class="d-flex align-items-center gap-2">
+              <span class="asset-badge">{{project.department}}</span>
+              <span class="text-secondary" style="font-size: 0.7rem; letter-spacing: 1px;">CLEARANCE: LVL-{{project.criticality_level === 'MISSION_CRITICAL' ? '4' : '2'}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="description-box">
+          <p>{{project.description || 'System asset under SLT Group encrypted management protocol.'}}</p>
+        </div>
+
+        <div class="status-grid">
+          <div class="status-item">
+            <span class="label">DEPARTMENT</span>
+            <span class="value">{{project.department}}</span>
+          </div>
+          <div class="status-item">
+            <span class="label">SEC_PROTOCOL</span>
+            <span class="value">AES-256-GCM</span>
+          </div>
+          <div class="status-item">
+            <span class="label">OWNER_REF</span>
+            <span class="value">{{project.owner_details?.username || 'SYSTEM'}}</span>
+          </div>
+          <div class="status-item">
+            <span class="label">INTEGRITY</span>
+            <span class="value" style="color: #4ade80;">99.9% ACTIVE</span>
+          </div>
+        </div>
+
+        <button mat-flat-button class="cyber-btn" [routerLink]="['/credentials']">
+          <mat-icon class="me-2" style="font-size: 18px;">key</mat-icon>
+          Access Vault
+        </button>
+      </div>
+
+      <!-- Tech decoration footer -->
+      <div class="p-2 bg-black bg-opacity-20 d-flex justify-content-between align-items-center" style="font-size: 0.6rem; color: #475569; font-family: monospace;">
+        <span>SLT_GLOBAL_INFRA_V2</span>
+        <span>LATENCY: 14MS</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="cyber-mfa-wrapper">
+  <div class="mfa-glass-card shadow-glow" [class.success-mode]="isVerified">
+    <div class="card-edge-highlight"></div>
+    
+    <!-- Setup View -->
+    <div *ngIf="!isVerified">
+      <div class="mfa-header">
+        <div class="security-shield-animated">
+          <mat-icon class="shield-icon">security</mat-icon>
+          <div class="pulse-ring"></div>
+        </div>
+        <h2 class="slt-gradient-text">MULTI-FACTOR AUTHENTICATION</h2>
+        <p class="subtitle">Secure your enterprise identity with SLT-Mobitel Vault</p>
+      </div>
+
+      <div class="mfa-content">
+        <div class="instruction-stepper">
+          <div class="step">
+            <span class="step-num">01</span>
+            <p>Scan the cryptographically generated QR using <strong>Authenticator App</strong></p>
+          </div>
+        </div>
+
+        <div class="qr-container-animated" [class.loaded]="qrLoaded">
+          <div class="qr-scanner-line"></div>
+          <div class="qr-frame">
+            <img *ngIf="qrLoaded" [src]="qrCode" alt="MFA QR Code" class="qr-image">
+            <div *ngIf="!qrLoaded" class="shimmer-loader"></div>
+          </div>
+        </div>
+
+        <div class="verification-zone" *ngIf="qrLoaded">
+          <div class="input-focus-wrapper">
+            <mat-form-field appearance="outline" class="cyber-otp-field">
+              <mat-label>Verification Token</mat-label>
+              <input matInput [(ngModel)]="otpToken" placeholder="------" maxlength="6" class="otp-input">
+              <mat-icon matSuffix>lock_open</mat-icon>
+            </mat-form-field>
+          </div>
+
+          <button mat-flat-button class="btn-verify-cyber" (click)="verifyAndEnable()" [disabled]="!otpToken || otpToken.length < 6">
+            <span class="btn-content">
+              <mat-icon>verified_user</mat-icon>
+              INITIALIZE CRYPTO-KEY
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success View -->
+    <div *ngIf="isVerified" class="success-container animate-fade-in">
+      <div class="success-icon-wrapper">
+        <mat-icon class="check-icon">check_circle</mat-icon>
+        <div class="confetti-bits"></div>
+      </div>
+      <h2 class="success-title">SETUP COMPLETE</h2>
+      <p class="success-msg">MFA Protection is now ACTIVE on your account.</p>
+      
+      <div class="security-status-badge">
+        <mat-icon>verified</mat-icon>
+        PROTECTED BY AES-256-GCM
+      </div>
+
+      <button mat-flat-button class="btn-done" routerLink="/projects">
+        <mat-icon>arrow_forward</mat-icon>
+        PROCEED TO VAULT
+      </button>
+    </div>
+
+    <div class="card-footer">
+      <mat-icon>vpn_key</mat-icon>
+      <span>Hardware security module (HSM) protected setup</span>
+    </div>
+  </div>
+</div>

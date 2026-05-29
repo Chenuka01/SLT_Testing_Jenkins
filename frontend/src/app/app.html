@@ -1,0 +1,37 @@
+<div class="main-container h-100 d-flex flex-column">
+  <mat-toolbar class="glass-navbar px-4" style="height: 70px;">
+    <div class="d-flex align-items-center">
+      <div class="bg-white rounded-circle p-1 me-2 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+        <img src="R.jpg" style="height: 30px; object-fit: contain;">
+      </div>
+      <div class="d-flex flex-column">
+        <span class="slt-gradient-text" style="font-size: 1.1rem; line-height: 1; margin-bottom: 2px;">VAULT</span>
+        <span class="text-secondary" style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em;">SECURE BY SLT</span>
+      </div>
+    </div>
+    
+    <span class="spacer" style="flex: 1 1 auto;"></span>
+    
+    <div class="nav-links d-none d-lg-flex bg-white bg-opacity-5 rounded-pill px-3 py-1">
+      <a mat-button routerLink="/projects" routerLinkActive="active-nav">PROJECTS</a>
+      <a mat-button routerLink="/credentials" routerLinkActive="active-nav">CREDENTIALS</a>
+      <a mat-button routerLink="/logs" routerLinkActive="active-nav">AUDIT LOGS</a>
+      <a mat-button routerLink="/mfa-setup" routerLinkActive="active-nav">MFA</a>
+      <a mat-button routerLink="/break-glass" class="warn-btn" routerLinkActive="active-nav">BREAK-GLASS</a>
+    </div>
+    
+    <div class="ms-4 d-flex align-items-center">
+      <div class="d-none d-md-flex flex-column text-end me-3">
+        <span class="text-white fw-bold" style="font-size: 0.8rem;">SLT/EMP/001</span>
+        <span class="text-success" style="font-size: 0.65rem;">LEVEL-4 ACCESS</span>
+      </div>
+      <button mat-icon-button routerLink="/login" class="logout-btn">
+        <mat-icon style="font-size: 20px;">power_settings_new</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <div class="portal-body flex-grow-1 p-0 p-lg-4" style="overflow-y: auto;">
+    <router-outlet></router-outlet>
+  </div>
+</div>

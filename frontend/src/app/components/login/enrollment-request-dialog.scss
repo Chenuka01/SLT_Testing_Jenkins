@@ -1,0 +1,139 @@
+.enrollment-modal {
+  width: min(760px, 92vw);
+  padding: 4px;
+  color: #f8fafc;
+  background: #020617;
+}
+
+.modal-header {
+  display: flex;
+  gap: 16px;
+  padding: 24px 24px 8px;
+
+  span {
+    display: block;
+    color: #7dd3fc;
+    font-family: 'JetBrains Mono', 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+  }
+
+  h2 {
+    margin: 6px 0 4px;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+
+  p {
+    margin: 0;
+    color: #cbd5e1;
+  }
+}
+
+.header-icon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 1px solid rgba(125, 211, 252, 0.28);
+  border-radius: 10px;
+  background: rgba(0, 161, 225, 0.12);
+
+  mat-icon {
+    color: #7dd3fc;
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.enrollment-form {
+  display: grid;
+  gap: 14px;
+  padding-top: 8px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.secure-field {
+  width: 100%;
+
+  ::ng-deep {
+    .mat-mdc-text-field-wrapper {
+      background: rgba(15, 23, 42, 0.82) !important;
+      border-radius: 10px !important;
+    }
+
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: rgba(148, 163, 184, 0.22) !important;
+    }
+
+    .mat-mdc-select-value,
+    input,
+    textarea {
+      color: #ffffff !important;
+    }
+
+    input::placeholder {
+      color: #94a3b8 !important;
+    }
+
+    mat-icon,
+    .mat-mdc-select-arrow {
+      color: #7dd3fc !important;
+    }
+
+    label {
+      color: #cbd5e1 !important;
+    }
+  }
+}
+
+.error-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid rgba(248, 113, 113, 0.28);
+  border-radius: 8px;
+  background: rgba(127, 29, 29, 0.28);
+  color: #fecaca;
+  font-size: 0.85rem;
+}
+
+.primary-action,
+.secondary-action {
+  height: 44px !important;
+  border-radius: 7px !important;
+  font-weight: 800 !important;
+}
+
+.primary-action {
+  background: linear-gradient(135deg, #0078b8, #00a1e1) !important;
+  color: #ffffff !important;
+
+  mat-icon {
+    margin-right: 8px;
+  }
+}
+
+.secondary-action {
+  color: #e0f2fe !important;
+  border-color: rgba(125, 211, 252, 0.32) !important;
+}
+
+@media (max-width: 680px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,230 @@
+.break-glass-wrapper {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 90vh;
+}
+
+// --- Critical Warning Banner ---
+.emergency-banner {
+  position: relative;
+  background: rgba(255, 78, 80, 0.05);
+  border: 1px solid rgba(255, 78, 80, 0.2);
+  border-left: 5px solid #ff4e50;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  .warning-glow {
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 78, 80, 0.1) 0%, transparent 70%);
+    filter: blur(40px);
+    z-index: 0;
+  }
+
+  .banner-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .icon-wrapper {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 78, 80, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ff4e50;
+      animation: pulseAlert 2s infinite;
+
+      mat-icon { font-size: 32px; width: 32px; height: 32px; }
+    }
+
+    h2 {
+      font-family: 'Space Mono', monospace;
+      color: #ff4e50;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
+    p {
+      margin: 5px 0 0 0;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// --- Status Section ---
+.protocol-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30px;
+
+  .header-titles {
+    h3 {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+      color: var(--slt-accent);
+      margin: 0;
+      text-transform: uppercase;
+    }
+    .active-count {
+      display: block;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 5px;
+    }
+  }
+}
+
+// --- Cyber Table Styles ---
+.cyber-panel {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.cyber-table {
+  width: 100%;
+  background: transparent !important;
+
+  th {
+    background: rgba(0, 0, 0, 0.3) !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding: 20px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  td {
+    padding: 20px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+    color: #f1f5f9;
+  }
+
+  .user-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    mat-icon { color: var(--slt-accent); font-size: 20px; }
+  }
+
+  .reason-cell {
+    font-size: 0.9rem;
+    max-width: 400px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+  }
+
+  .status-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+
+    &.active {
+      background: rgba(255, 78, 80, 0.1);
+      color: #ff4e50;
+      border: 1px solid rgba(255, 78, 80, 0.3);
+      animation: pulseAlert 2s infinite;
+    }
+    &.resolved {
+      background: rgba(0, 230, 118, 0.1);
+      color: #00e676;
+      border: 1px solid rgba(0, 230, 118, 0.3);
+    }
+  }
+
+  .approval-meter {
+    .meter-label {
+      font-size: 0.65rem;
+      font-family: 'Space Mono', monospace;
+      color: rgba(255, 255, 255, 0.4);
+      display: block;
+      margin-bottom: 5px;
+    }
+    .meter-bar {
+      height: 4px;
+      width: 100px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      .progress {
+        height: 100%;
+        background: #00e676;
+        box-shadow: 0 0 10px #00e676;
+        transition: width 0.6s ease;
+      }
+    }
+  }
+}
+
+// --- Action Buttons ---
+.cyber-btn {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 1px;
+  height: 48px;
+  padding: 0 25px !important;
+  border-radius: 8px;
+  transition: all 0.3s;
+
+  &.emergency {
+    background: #ff4e50 !important;
+    color: white !important;
+    box-shadow: 0 10px 30px rgba(255, 78, 80, 0.3);
+    &:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(255, 78, 80, 0.4);
+    }
+  }
+
+  &.glass-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    &:hover {
+      background: rgba(0, 161, 225, 0.1);
+      border-color: var(--slt-accent);
+      color: var(--slt-accent);
+    }
+  }
+}
+
+// --- Animations ---
+@keyframes pulseAlert {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.98); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.staggered-row {
+  opacity: 0;
+  animation: slideDown 0.4s ease-out forwards;
+}

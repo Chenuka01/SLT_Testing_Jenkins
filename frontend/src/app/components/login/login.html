@@ -1,0 +1,83 @@
+<main class="login-page">
+  <div class="login-grid-bg" aria-hidden="true"></div>
+  <div class="scan-beam" aria-hidden="true"></div>
+
+  <section class="login-intro animate-panel">
+    <div class="command-badge">
+      <span class="live-dot"></span>
+      <span>SLT SECURE AUTHENTICATION GATEWAY</span>
+    </div>
+
+    <div class="brand-lockup">
+      <div class="brand-mark">
+        <img src="R.jpg" alt="SLT Logo">
+      </div>
+      <div>
+        <span class="brand-kicker">SECURE BY SLT</span>
+        <h1>Enterprise Vault</h1>
+      </div>
+    </div>
+
+    <p class="intro-copy">
+      Authorized access for cryptographic assets, privileged identities, and critical infrastructure credentials across the SLT digital ecosystem.
+    </p>
+
+    <div class="trust-metrics">
+      <div>
+        <span>VAULT STRENGTH</span>
+        <strong>AES-256-GCM</strong>
+      </div>
+      <div>
+        <span>ACCESS LAYER</span>
+        <strong>LEVEL-4</strong>
+      </div>
+      <div>
+        <span>AUDIT MODE</span>
+        <strong>REAL-TIME</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="auth-console animate-panel" style="animation-delay: 0.12s;" aria-labelledby="login-title">
+    <div class="console-header">
+      <div>
+        <span class="console-label">IDENTITY VERIFICATION</span>
+        <h2 id="login-title">Authorize Session</h2>
+      </div>
+      <mat-icon>verified_user</mat-icon>
+    </div>
+
+    <form (submit)="onLogin()" class="login-form">
+      <label>
+        <span>Corporate Identity</span>
+        <mat-form-field appearance="outline" class="dark-field">
+          <input matInput [(ngModel)]="username" name="username" placeholder="SLT/EMP/XXXX" required>
+          <mat-icon matSuffix>badge</mat-icon>
+        </mat-form-field>
+      </label>
+
+      <label>
+        <span>Vault Passcode</span>
+        <mat-form-field appearance="outline" class="dark-field">
+          <input matInput type="password" [(ngModel)]="password" name="password" placeholder="Enter secure passcode" required>
+          <mat-icon matSuffix>lock_person</mat-icon>
+        </mat-form-field>
+      </label>
+
+      <div class="session-row">
+        <span>SESSION POLICY</span>
+        <strong>ENCRYPTED + LOGGED</strong>
+      </div>
+
+      <button mat-flat-button class="authorize-btn" type="submit">
+        <mat-icon>login</mat-icon>
+        Authorize & Access
+      </button>
+    </form>
+
+    <div class="support-strip">
+      <span>Access revoked or expired?</span>
+      <button type="button" (click)="onRegisterRequest()">Contact SecOps</button>
+    </div>
+  </section>
+</main>

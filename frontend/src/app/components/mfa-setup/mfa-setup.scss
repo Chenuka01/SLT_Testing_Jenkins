@@ -1,0 +1,311 @@
+.cyber-mfa-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: radial-gradient(circle at center, rgba(0, 161, 225, 0.05) 0%, transparent 70%);
+  padding: 2rem;
+  perspective: 1000px;
+}
+
+.mfa-glass-card {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 3rem;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  animation: cardEnter 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.5s ease;
+
+  &.success-mode {
+    border-color: rgba(0, 230, 118, 0.3);
+    box-shadow: 0 0 40px rgba(0, 230, 118, 0.15);
+  }
+}
+
+.card-edge-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #00a1e1, #4fc3f7, transparent);
+  animation: scanline 4s linear infinite;
+}
+
+.mfa-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+
+  h2 {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.3rem;
+    letter-spacing: 4px;
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+.security-shield-animated {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+  
+  .shield-icon {
+    font-size: 70px;
+    width: 70px;
+    height: 70px;
+    color: #4fc3f7;
+    z-index: 2;
+    position: relative;
+    filter: drop-shadow(0 0 15px rgba(79, 195, 247, 0.4));
+  }
+
+  .pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid #00a1e1;
+    animation: ringPulse 2.5s infinite ease-out;
+  }
+}
+
+.instruction-stepper {
+  margin-bottom: 2rem;
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 12px 20px;
+    border-radius: 12px;
+    border-left: 4px solid #00a1e1;
+
+    .step-num {
+      font-family: 'Space Mono', monospace;
+      font-weight: 900;
+      color: #00a1e1;
+      font-size: 1.1rem;
+    }
+    p { margin: 0; font-size: 0.85rem; opacity: 0.9; }
+  }
+}
+
+.qr-container-animated {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin: 0 auto 2.5rem;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+
+  .qr-scanner-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #00e676;
+    box-shadow: 0 0 20px #00e676;
+    z-index: 5;
+    animation: qrScan 3s ease-in-out infinite;
+  }
+
+  .qr-frame {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    img {
+      width: 85%;
+      height: 85%;
+      object-fit: contain;
+    }
+  }
+}
+
+.cyber-otp-field {
+  width: 100%;
+  margin-bottom: 2rem;
+
+  ::ng-deep .mat-mdc-text-field-wrapper {
+    background: rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .otp-input {
+    letter-spacing: 12px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: 'Space Mono', monospace !important;
+    color: #fff;
+    font-weight: 700;
+  }
+}
+
+.btn-verify-cyber {
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(135deg, #00a1e1 0%, #004b87 100%) !important;
+  color: white;
+  border-radius: 14px;
+  font-family: 'Space Mono', monospace;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  .btn-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 161, 225, 0.4);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    background: #334155 !important;
+  }
+}
+
+/* Success State Styles */
+.success-container {
+  text-align: center;
+  padding: 2rem 0;
+
+  .success-icon-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 2rem;
+    
+    .check-icon {
+      font-size: 100px;
+      width: 100px;
+      height: 100px;
+      color: #00e676;
+      animation: checkPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+  }
+
+  .success-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.8rem;
+    color: #fff;
+    letter-spacing: 5px;
+    margin-bottom: 1rem;
+  }
+
+  .success-msg {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2.5rem;
+  }
+}
+
+.security-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 230, 118, 0.1);
+  color: #00e676;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(0, 230, 118, 0.3);
+}
+
+.btn-done {
+  width: 100%;
+  height: 55px;
+  background: white !important;
+  color: #020617 !important;
+  border-radius: 12px;
+  font-weight: 800;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.card-footer {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  opacity: 0.4;
+
+  mat-icon { font-size: 16px; width: 16px; height: 16px; }
+}
+
+@keyframes cardEnter {
+  from { opacity: 0; transform: translateY(50px) rotateX(-10deg); }
+  to { opacity: 1; transform: translateY(0) rotateX(0deg); }
+}
+
+@keyframes scanline {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes ringPulse {
+  0% { transform: translate(-50%, -50%) scale(0.6); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+}
+
+@keyframes qrScan {
+  0%, 100% { top: 0%; }
+  50% { top: 100%; }
+}
+
+@keyframes checkPop {
+  0% { transform: scale(0); opacity: 0; }
+  80% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.shimmer-loader {
+  width: 190px;
+  height: 190px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
