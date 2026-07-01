@@ -24,6 +24,7 @@ services:
       - "8000:8000"
     environment:
       - ENCRYPTION_KEY=your-32-character-encryption-key-here
+      - DB_HOST=db
     depends_on:
       - db
 
