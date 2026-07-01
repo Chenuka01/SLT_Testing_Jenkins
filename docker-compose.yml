@@ -34,7 +34,7 @@ services:
       context: ./frontend
     container_name: angular_frontend
     ports:
-      - "9000:80"
+      - "9051:80"
     depends_on:
       - backend
 
