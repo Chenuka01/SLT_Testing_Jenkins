@@ -1,0 +1,9 @@
+Django==5.2.14
+django-cors-headers==4.9.0
+djangorestframework==3.17.1
+psycopg2-binary==2.9.12
+pyotp==2.10.0
+qrcode==8.2
+cryptography==49.0.0
+python-dotenv==1.2.2
+pillow==10.4.0
