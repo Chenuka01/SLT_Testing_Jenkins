@@ -18,6 +18,10 @@ export class Api {
     return this.http.post(`${this.baseUrl}/projects/`, data);
   }
 
+  updateProject(id: number, data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/projects/${id}/`, data);
+  }
+
   getCredentials(): Observable<any> {
     return this.http.get(`${this.baseUrl}/credentials/`);
   }

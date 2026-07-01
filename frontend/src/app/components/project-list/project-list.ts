@@ -63,6 +63,22 @@ export class ProjectListComponent implements OnInit {
     });
   }
 
+  openEditProjectDialog(project: any, event: Event): void {
+    event.stopPropagation();
+    const dialogRef = this.dialog.open(NewProjectDialog, {
+      width: '600px',
+      panelClass: 'cyber-dialog-panel',
+      data: { project: project }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.snackBar.open('VAULT CONTAINER UPDATED SUCCESSFULLY', 'OK', { duration: 3000 });
+        this.loadProjects();
+      }
+    });
+  }
+
   applyFilters() {
     this.projects = this.allProjects.filter(p => {
       const matchSearch = p.name.toLowerCase().includes(this.searchTerm.toLowerCase()) || 

@@ -1,9 +1,9 @@
 <div class="cyber-dialog">
   <div class="dialog-header">
-    <mat-icon class="header-icon">add_box</mat-icon>
+    <mat-icon class="header-icon">{{isEdit ? 'edit_note' : 'add_box'}}</mat-icon>
     <div class="header-text">
-      <h2>INITIALIZE NEW PROJECT</h2>
-      <p class="subtitle">REGISTER CRYPTOGRAPHIC ASSET CONTAINER</p>
+      <h2>{{isEdit ? 'UPDATE SECURITY CONTAINER' : 'INITIALIZE NEW PROJECT'}}</h2>
+      <p class="subtitle">{{isEdit ? 'RE-CONFIGURING CRYPTOGRAPHIC ASSET PROFILE' : 'REGISTER CRYPTOGRAPHIC ASSET CONTAINER'}}</p>
     </div>
   </div>
 
@@ -75,8 +75,8 @@
     <button mat-flat-button class="btn-save" 
             [disabled]="!projectForm.form.valid"
             (click)="onSave()">
-      <mat-icon>save</mat-icon>
-      INITIALIZE
+      <mat-icon>{{isEdit ? 'update' : 'save'}}</mat-icon>
+      {{isEdit ? 'UPDATE' : 'INITIALIZE'}}
     </button>
   </mat-dialog-actions>
 </div>

@@ -105,9 +105,14 @@
       <div class="p-4">
         <div class="card-header-meta">
           <span class="asset-id">AST-{{project.id || '999'}} // SEC-{{project.criticality_level?.charAt(0) || 'N'}}</span>
-          <mat-icon [style.color]="project.criticality_level === 'MISSION_CRITICAL' ? '#ff4e50' : '#00a1e1'" style="font-size: 18px;">
-            {{project.criticality_level === 'MISSION_CRITICAL' ? 'report_problem' : 'hub'}}
-          </mat-icon>
+          <div class="d-flex align-items-center gap-2">
+            <button mat-icon-button (click)="openEditProjectDialog(project, $event)" title="Configure Shield" style="color: rgba(255, 255, 255, 0.4); margin-right: 4px; border: none; background: transparent; cursor: pointer;">
+              <mat-icon style="font-size: 16px; width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;">edit</mat-icon>
+            </button>
+            <mat-icon [style.color]="project.criticality_level === 'MISSION_CRITICAL' ? '#ff4e50' : '#00a1e1'" style="font-size: 18px;">
+              {{project.criticality_level === 'MISSION_CRITICAL' ? 'report_problem' : 'hub'}}
+            </mat-icon>
+          </div>
         </div>
 
         <div class="d-flex align-items-center gap-3 mb-4">
@@ -153,9 +158,9 @@
       </div>
 
       <!-- Tech decoration footer -->
-      <div class="p-2 bg-black bg-opacity-20 d-flex justify-content-between align-items-center" style="font-size: 0.6rem; color: #475569; font-family: monospace;">
+      <div class="p-2 bg-black bg-opacity-20" style="font-size: 0.6rem; color: #475569; font-family: monospace; display: flex !important; justify-content: space-between !important; flex-direction: row !important;">
         <span>SLT_GLOBAL_INFRA_V2</span>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;| LATENCY: 14MS</span>
+        <span>LATENCY: 14MS</span>
       </div>
     </div>
   </div>
