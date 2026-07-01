@@ -57,12 +57,12 @@ export class Api {
   // --- MFA ENDPOINTS ---
   setupMFA(): Observable<any> {
     const userId = localStorage.getItem('user_id') || 'admin';
-    return this.http.post(`${this.baseUrl}/users/setup_mfa/`, { username: userId });
+    return this.http.post(`${this.baseUrl}/users/setup-mfa/`, { username: userId });
   }
 
   verifyMFA(token: string): Observable<any> {
     const userId = localStorage.getItem('user_id') || 'admin';
-    return this.http.post(`${this.baseUrl}/users/verify_mfa/`, { token, username: userId });
+    return this.http.post(`${this.baseUrl}/users/verify-mfa/`, { token, username: userId });
   }
 
   // --- BREAK-GLASS ENDPOINTS ---

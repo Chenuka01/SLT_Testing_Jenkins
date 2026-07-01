@@ -15,7 +15,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]
 
-    @action(detail=False, methods=['post'])
+    @action(detail=False, methods=['post'], url_path='setup-mfa')
     def setup_mfa(self, request):
         username = request.data.get('username', 'admin')
         
@@ -40,7 +40,7 @@ class UserViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({'error': str(e)}, status=500)
 
-    @action(detail=False, methods=['post'])
+    @action(detail=False, methods=['post'], url_path='verify-mfa')
     def verify_mfa(self, request):
         token = request.data.get('token')
         username = request.data.get('username')
