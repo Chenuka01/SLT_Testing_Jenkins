@@ -13,6 +13,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = ['id', 'name', 'description', 'department', 'owner', 'owner_details', 'criticality_level', 'created_at']
+        read_only_fields = ['owner']
 
 class CredentialSerializer(serializers.ModelSerializer):
     class Meta:
