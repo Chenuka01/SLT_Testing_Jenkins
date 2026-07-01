@@ -1,0 +1,82 @@
+<div class="cyber-dialog">
+  <div class="dialog-header">
+    <mat-icon class="header-icon">add_box</mat-icon>
+    <div class="header-text">
+      <h2>INITIALIZE NEW PROJECT</h2>
+      <p class="subtitle">REGISTER CRYPTOGRAPHIC ASSET CONTAINER</p>
+    </div>
+  </div>
+
+  <mat-dialog-content class="dialog-content">
+    <form #projectForm="ngForm" class="cyber-form">
+      <div class="row g-3">
+        <!-- Project Name -->
+        <div class="col-12">
+          <label class="form-label">PROJECT NAME</label>
+          <div class="input-wrapper">
+            <input type="text" 
+                   [(ngModel)]="data.name" 
+                   name="name" 
+                   required
+                   placeholder="e.g. Billing System Gateway"
+                   class="cyber-input">
+            <span class="focus-glow"></span>
+          </div>
+        </div>
+
+        <!-- Department -->
+        <div class="col-md-6">
+          <label class="form-label">DEPARTMENT / TEAM</label>
+          <div class="input-wrapper">
+            <input type="text" 
+                   [(ngModel)]="data.department" 
+                   name="department" 
+                   required
+                   placeholder="e.g. IT Infrastructure"
+                   class="cyber-input">
+            <span class="focus-glow"></span>
+          </div>
+        </div>
+
+        <!-- Criticality Level -->
+        <div class="col-md-6">
+          <label class="form-label">CRITICALITY LEVEL</label>
+          <div class="input-wrapper">
+            <select [(ngModel)]="data.criticality_level" 
+                    name="criticality_level" 
+                    class="cyber-select">
+              <option value="LOW">LOW</option>
+              <option value="MEDIUM">MEDIUM</option>
+              <option value="HIGH">HIGH</option>
+              <option value="MISSION_CRITICAL">MISSION CRITICAL</option>
+            </select>
+            <span class="focus-glow"></span>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="col-12">
+          <label class="form-label">PROJECT DESCRIPTION</label>
+          <div class="input-wrapper">
+            <textarea [(ngModel)]="data.description" 
+                      name="description" 
+                      rows="3"
+                      placeholder="Specify project scope and access protocol policies..."
+                      class="cyber-input textarea"></textarea>
+            <span class="focus-glow"></span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="dialog-actions">
+    <button mat-stroked-button class="btn-cancel" (click)="onCancel()">ABORT</button>
+    <button mat-flat-button class="btn-save" 
+            [disabled]="!projectForm.form.valid"
+            (click)="onSave()">
+      <mat-icon>save</mat-icon>
+      INITIALIZE
+    </button>
+  </mat-dialog-actions>
+</div>

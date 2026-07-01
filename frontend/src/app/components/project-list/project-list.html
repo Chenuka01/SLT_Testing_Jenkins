@@ -21,7 +21,11 @@
           <mat-icon>verified_user</mat-icon>
           View Secure Assets
         </a>
-        <div class="clearance-chip">
+        <button mat-flat-button class="hero-secondary-action ms-3" (click)="openNewProjectDialog()">
+          <mat-icon>add_box</mat-icon>
+          Initialize New Project
+        </button>
+        <div class="clearance-chip ms-3">
           <span>LEVEL-4 ACCESS</span>
           <strong>AUTHENTICATED</strong>
         </div>

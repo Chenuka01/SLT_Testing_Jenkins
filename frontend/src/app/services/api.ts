@@ -14,6 +14,10 @@ export class Api {
     return this.http.get(`${this.baseUrl}/projects/`);
   }
 
+  createProject(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/projects/`, data);
+  }
+
   getCredentials(): Observable<any> {
     return this.http.get(`${this.baseUrl}/credentials/`);
   }
