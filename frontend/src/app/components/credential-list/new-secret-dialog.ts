@@ -32,7 +32,7 @@ export class NewSecretDialog implements OnInit {
     credential_type: 'API_KEY',
     username: '',
     secret: '',
-    project_id: null
+    project: null
   };
   projects: any[] = [];
   hideSecret = true;
